@@ -23,9 +23,37 @@ chmod +x auto-dim.sh
 
 ## Usage
 
+### Toggle with Karabiner (Recommended)
+
+Use `Hyper+E` to toggle auto-dim on/off with notification feedback.
+
+Add this to your Karabiner config (see [setup repo](https://github.com/MuntasirMalek/setup)):
+```json
+{
+  "description": "Hyper+e to Toggle Auto-Dim",
+  "manipulators": [
+    {
+      "from": {
+        "key_code": "e",
+        "modifiers": {
+          "mandatory": ["left_shift", "left_command", "left_control", "left_option"]
+        }
+      },
+      "to": [{ "shell_command": "/Users/utsho/auto-dim/toggle.sh" }],
+      "type": "basic"
+    }
+  ]
+}
+```
+
 ### Run manually
 ```bash
 ./auto-dim.sh
+```
+
+### Toggle on/off
+```bash
+./toggle.sh  # Shows notification: "Auto-Dim ON" or "Auto-Dim OFF"
 ```
 
 ### Custom timeout (default is 2 minutes)
@@ -59,6 +87,7 @@ Edit `com.autodim.plist` before installing to change:
 ## Files
 
 - `auto-dim.sh` - Main script
+- `toggle.sh` - Toggle on/off with notification (for Karabiner)
 - `install.sh` - Install as startup service
 - `uninstall.sh` - Remove startup service
 - `com.autodim.plist` - LaunchAgent config
