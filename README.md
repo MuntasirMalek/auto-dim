@@ -25,21 +25,21 @@ chmod +x auto-dim.sh
 
 ### Toggle with Karabiner (Recommended)
 
-Use `Hyper+E` to toggle auto-dim on/off with notification feedback.
+Use `Hyper+W` to toggle auto-dim **and** KeepingYouAwake together — one press turns both on, another press turns both off.
 
 Add this to your Karabiner config (see [setup repo](https://github.com/MuntasirMalek/setup)):
 ```json
 {
-  "description": "Hyper+e to Toggle Auto-Dim",
+  "description": "Hyper+w to Toggle Auto-Dim + KeepingYouAwake",
   "manipulators": [
     {
       "from": {
-        "key_code": "e",
+        "key_code": "w",
         "modifiers": {
           "mandatory": ["left_shift", "left_command", "left_control", "left_option"]
         }
       },
-      "to": [{ "shell_command": "/Users/utsho/auto-dim/toggle.sh" }],
+      "to": [{ "shell_command": "/Users/utsho/auto-dim/toggle-with-wake.sh" }],
       "type": "basic"
     }
   ]
@@ -87,7 +87,8 @@ Edit `com.autodim.plist` before installing to change:
 ## Files
 
 - `auto-dim.sh` - Main script
-- `toggle.sh` - Toggle on/off with notification (for Karabiner)
+- `toggle.sh` - Toggle auto-dim only (standalone)
+- `toggle-with-wake.sh` - Toggle auto-dim + KeepingYouAwake together (used by Hyper+W)
 - `install.sh` - Install as startup service
 - `uninstall.sh` - Remove startup service
 - `com.autodim.plist` - LaunchAgent config
